@@ -28,7 +28,7 @@ app.post("/chat", async (req, res) => {
 
     // Generate response from Gemini
     const result = await model.generateContent(prompt);
-    const text = result.response.text(); // Extract the plain text
+    const text = result.response.text().replace(/\*/g, ""); // Extract the plain text without asterisk
 
     console.log("Gemini response:", text);
 

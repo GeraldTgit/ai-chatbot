@@ -50,6 +50,9 @@ function App() {
     // Add AI's response to chat
     const aiMessage = { sender: 'ai', text: data.text };
     setMessages(prev => [aiMessage, ...prev]);
+
+    // speak once response is received
+    speak(data.text)
   };
 
   return (
