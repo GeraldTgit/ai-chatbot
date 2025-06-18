@@ -31,3 +31,5 @@ dist-ssr
 **/.env
 
 **/google-app-credential.json
+
+**/key.json.base64

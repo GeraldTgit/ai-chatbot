@@ -1,6 +1,17 @@
 // Load environment variables from .env file
 require("dotenv").config();
 
+const fs = require("fs");
+
+if (process.env.GOOGLE_CLOUD_KEY_BASE64) {
+  const decodedKey = Buffer.from(
+    process.env.GOOGLE_CLOUD_KEY_BASE64,
+    "base64"
+  ).toString("utf-8");
+  fs.writeFileSync("/tmp/key.json", decodedKey);
+  process.env.GOOGLE_APPLICATION_CREDENTIALS = "/tmp/key.json";
+}
+
 // Import required modules
 const express = require("express");
 const cors = require("cors");
@@ -196,12 +207,10 @@ app.post("/chat-voice", upload.single("audio"), async (req, res) => {
       error.details &&
       error.details.includes("RecognitionAudio not set")
     ) {
-      return res
-        .status(400)
-        .json({
-          error:
-            "Invalid audio content received by STT. Please ensure microphone is working and speak clearly.",
-        });
+      return res.status(400).json({
+        error:
+          "Invalid audio content received by STT. Please ensure microphone is working and speak clearly.",
+      });
     }
     return res
       .status(500)
