@@ -17,7 +17,7 @@ const express = require("express");
 const cors = require("cors");
 const { GoogleGenerativeAI } = require("@google/generative-ai");
 const multer = require("multer"); // For handling file uploads
-const fs = require("fs"); // For file system operations (reading audio files)
+//const fs = require("fs"); // For file system operations (reading audio files)
 const path = require("path"); // For path manipulation
 
 const app = express();
