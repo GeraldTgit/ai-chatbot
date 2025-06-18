@@ -25,7 +25,7 @@ function App() {
 
 
   // Base URL for your backend API. IMPORTANT: Ensure this matches your backend server's port.
-  const API_BASE_URL = 'http://localhost:5000'; 
+  const API_BASE_URL = 'https://ai-chatbot-backend-w982.onrender.com'; 
 
   // Effect to scroll to the bottom of the chat window on message update
   useEffect(() => {
